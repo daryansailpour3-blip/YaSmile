@@ -1,3 +1,53 @@
+// Scroll-Animationen: Elemente beim Hineinscrollen sanft einblenden
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if ('IntersectionObserver' in window && !reduceMotion) {
+  document.documentElement.classList.add('js');
+  const selectors = '.section-head, .two-col > *, .card, .features li, .location-card, .steps li, .member, .team-text, .emergency, .faq details, .checklist, .campaign-teaser, .highlight, .image-band .container, .form';
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        el.classList.add('visible');
+        observer.unobserve(el);
+        // Nach dem Einblenden aufräumen, damit Hover-Effekte wieder greifen
+        setTimeout(() => {
+          el.classList.remove('reveal', 'visible');
+          el.style.transitionDelay = '';
+        }, 1500);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll(selectors).forEach((el) => {
+    if (el.closest('.reveal')) return;
+    const siblings = Array.from(el.parentElement.children);
+    el.style.transitionDelay = `${Math.min(siblings.indexOf(el), 5) * 90}ms`;
+    el.classList.add('reveal');
+    observer.observe(el);
+  });
+}
+
+// Header-Schatten und Parallax des Signets in den Musterbändern beim Scrollen
+const header = document.querySelector('.site-header');
+const bands = document.querySelectorAll('.band-signet');
+let ticking = false;
+function onScroll() {
+  if (header) header.classList.toggle('scrolled', window.scrollY > 10);
+  if (!reduceMotion) {
+    bands.forEach((img) => {
+      const rect = img.parentElement.getBoundingClientRect();
+      if (rect.bottom > 0 && rect.top < window.innerHeight) {
+        const progress = (rect.top + rect.height) / (window.innerHeight + rect.height);
+        img.style.transform = `translateY(${(progress - 1) * 16}%)`;
+      }
+    });
+  }
+  ticking = false;
+}
+window.addEventListener('scroll', () => {
+  if (!ticking) { requestAnimationFrame(onScroll); ticking = true; }
+}, { passive: true });
+onScroll();
+
 // Mobile navigation
 const toggle = document.querySelector('.nav-toggle');
 const nav = document.getElementById('main-nav');
