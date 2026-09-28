@@ -1,4 +1,4 @@
-# YaSmile – Website der Zahnarztpraxis
+# YASMILE – Website der Zahnarztpraxis
 
 Statische, responsive Website (HTML, CSS, JavaScript – ohne Build-Schritt).
 
@@ -16,9 +16,9 @@ Statische, responsive Website (HTML, CSS, JavaScript – ohne Build-Schritt).
 
 ## Vor dem Livegang anpassen
 
-- Adresse, Telefonnummer, E-Mail (aktuell Platzhalter wie „Musterstraße 1“)
-- Namen und Fotos des Teams
-- Öffnungszeiten
+- Farben und Logo an yasmile.de angleichen
+- Fotos von Praxis und Team
+- Sprechzeiten eintragen
 - Impressum und Datenschutzerklärung (rechtlich prüfen lassen)
-- Karte/Anfahrt einbinden
+- Angaben zum Standort Idar-Oberstein ergänzen
 - Terminformular: öffnet derzeit das E-Mail-Programm; ggf. durch Online-Buchungstool (z. B. Doctolib) ersetzen

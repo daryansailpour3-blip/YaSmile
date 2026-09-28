@@ -55,7 +55,7 @@ if (form) {
     ].join('\n');
 
     window.location.href =
-      'mailto:info@yasmile.de?subject=' + encodeURIComponent('Terminanfrage – ' + data.get('name')) +
+      'mailto:kirn@yasmile.de?subject=' + encodeURIComponent('Terminanfrage – ' + data.get('name')) +
       '&body=' + encodeURIComponent(body);
 
     status.textContent = 'Vielen Dank! Ihr E-Mail-Programm wird geöffnet, um die Anfrage zu senden.';

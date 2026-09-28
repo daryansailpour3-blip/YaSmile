@@ -105,12 +105,9 @@ h3 { font-size: 1.15rem; }
 .note { color: var(--muted); font-size: .95rem; }
 
 .contact { font-style: normal; }
-.map-placeholder {
-  margin-top: 1.5rem; min-height: 200px; border-radius: var(--radius); border: 2px dashed #99f6e4;
-  background: #fff; display: grid; place-content: center; text-align: center; padding: 1rem; gap: .3rem;
-}
-.map-placeholder span { font-weight: 700; font-size: 1.1rem; }
-.map-placeholder small { color: var(--muted); }
+
+
+
 
 /* Form */
 .form { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; background: #fff; padding: 2rem; border-radius: var(--radius); box-shadow: var(--shadow); }
@@ -172,4 +169,24 @@ h3 { font-size: 1.15rem; }
   html { scroll-behavior: auto; }
   .smile-card { animation: none; }
   .card, .btn { transition: none; }
+}
+
+/* Team intro & locations */
+.team-intro { grid-template-columns: 280px 1fr; align-items: center; gap: 2.5rem; }
+.team-text p { font-size: 1.05rem; }
+.locations-title { margin-top: 2rem; }
+.locations { list-style: none; padding: 0; margin: 0; display: grid; gap: .6rem; }
+.locations li { background: #fff; border-radius: 12px; padding: .8rem 1.1rem; border: 1px solid var(--border); }
+.map-link {
+  margin-top: 1.5rem; min-height: 160px; border-radius: var(--radius); border: 2px dashed #99f6e4;
+  background: #fff; display: grid; place-content: center; text-align: center; padding: 1rem; gap: .3rem;
+  text-decoration: none; color: var(--text); transition: border-color .2s;
+}
+.map-link:hover { border-color: var(--primary); }
+.map-link span { font-weight: 700; font-size: 1.1rem; color: var(--primary); }
+.map-link small { color: var(--muted); }
+.cards .card h3 { font-size: 1.1rem; }
+@media (max-width: 760px) {
+  .team-intro { grid-template-columns: 1fr; }
+  .team-intro .member { max-width: 240px; margin-inline: auto; }
 }
