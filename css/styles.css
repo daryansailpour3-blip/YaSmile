@@ -203,3 +203,33 @@ h3 { font-size: 1.15rem; }
   .location-card { padding: 1.25rem; }
   .hours th, .hours td { padding: .6rem .7rem; }
 }
+
+/* Kampagne: Neupatienten */
+.steps { list-style: none; padding: 0; margin: 0 0 3rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; counter-reset: none; }
+.steps li { background: #fff; border-radius: var(--radius); padding: 2rem; box-shadow: 0 2px 8px rgba(0,0,0,.04); }
+.steps p { margin: 0; color: var(--muted); }
+.step-no {
+  display: inline-grid; place-items: center; width: 44px; height: 44px; border-radius: 50%;
+  background: var(--primary); color: #fff; font-weight: 700; margin-bottom: 1rem;
+}
+.checklist { background: #fff; border-radius: var(--radius); padding: 1.75rem 2rem; max-width: 760px; margin-inline: auto; border-left: 4px solid var(--primary); }
+.checklist ul { margin: 0; padding-left: 1.2rem; }
+.location-card .btn { margin-top: .5rem; }
+.faq details { background: #fff; border-radius: 12px; border: 1px solid var(--border); padding: 1rem 1.25rem; margin-bottom: .75rem; }
+.faq summary { cursor: pointer; font-weight: 600; color: var(--primary); }
+.faq details p { margin: .75rem 0 0; color: var(--muted); }
+.cta-band { background: var(--primary); color: var(--secondary); padding: 4rem 0; text-align: center; }
+.cta-band h2 { color: #fff; }
+.cta-inner p { margin: 0 0 1.5rem; }
+.btn-light { background: var(--secondary); color: var(--primary); border-color: var(--secondary); }
+.btn-light:hover { background: #fff; }
+.campaign-teaser { background: var(--primary); color: var(--secondary); border-radius: var(--radius); padding: 2rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; }
+.campaign-teaser h3 { color: #fff; margin: 0 0 .25rem; font-size: 1.35rem; }
+.campaign-teaser p { margin: 0; }
+@media (max-width: 900px) {
+  .steps { grid-template-columns: 1fr; }
+}
+.section-slim { padding: 3rem 0 0; }
+.smile-card { width: min(360px, 100%); padding: 0; }
+.smile-card img { width: 55%; height: auto; }
+@media (max-width: 900px) { .smile-card { width: 240px; } }

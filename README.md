@@ -5,6 +5,7 @@ Statische, responsive Website (HTML, CSS, JavaScript – ohne Build-Schritt).
 ## Struktur
 
 - `index.html` – Startseite (Praxis, Leistungen, Team, Öffnungszeiten, Kontakt, Terminanfrage)
+- `neupatienten.html` – Kampagnen-Landingpage „Neu bei YASMILE?“ (Neupatientengewinnung)
 - `impressum.html`, `datenschutz.html` – Rechtstexte (Platzhalter)
 - `css/styles.css` – Styles
 - `js/main.js` – Mobile Navigation und Terminformular
