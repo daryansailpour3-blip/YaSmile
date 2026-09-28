@@ -21,4 +21,5 @@ Statische, responsive Website (HTML, CSS, JavaScript – ohne Build-Schritt).
 - Sprechzeiten eintragen
 - Impressum und Datenschutzerklärung (rechtlich prüfen lassen)
 - Angaben zum Standort Idar-Oberstein ergänzen
-- Terminformular: öffnet derzeit das E-Mail-Programm; ggf. durch Online-Buchungstool (z. B. Doctolib) ersetzen
+- Terminformular: öffnet derzeit das E-Mail-Programm; Online-Buchung läuft über das Teemer-Tool von yasmile-kirn.de
+- Farben (#204b30 / #f5f4ea), Schrift (Montserrat) und Logo/Signet stammen von yasmile.de
