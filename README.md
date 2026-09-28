@@ -20,5 +20,4 @@ Statische, responsive Website (HTML, CSS, JavaScript – ohne Build-Schritt).
 - Fotos von Praxis und Team
 - Sprechzeiten eintragen
 - Impressum und Datenschutzerklärung (rechtlich prüfen lassen)
-- Angaben zum Standort Idar-Oberstein ergänzen
 - Terminformular: öffnet derzeit das E-Mail-Programm; ggf. durch Online-Buchungstool (z. B. Doctolib) ersetzen
