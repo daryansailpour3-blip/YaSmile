@@ -291,7 +291,7 @@ h2 { font-size: clamp(2rem, 4vw, 3rem); line-height: 1.1; }
 /* Musterbänder in den YASMILE-Farben */
 @keyframes drift { from { background-position: 0 0, 0 0; } to { background-position: 96px 48px, 0 0; } }
 .image-band {
-  position: relative; min-height: 60vh; display: grid; align-items: center; color: #fff; overflow: hidden;
+  position: relative; min-height: min(60vh, 560px); display: grid; align-items: center; color: #fff; overflow: hidden;
   background: url("../assets/pattern-light.svg") 0 0 / 96px 48px repeat, radial-gradient(ellipse at 80% 20%, #2c5f3e, var(--primary) 55%, var(--primary-dark));
   animation: drift 30s linear infinite;
 }
@@ -327,7 +327,7 @@ h2 { font-size: clamp(2rem, 4vw, 3rem); line-height: 1.1; }
   .highlight { min-height: 200px; }
 }
 @media (max-width: 760px) {
-  .image-band { min-height: 50vh; }
+  .image-band { min-height: min(50vh, 460px); }
 }
 
 @media (prefers-reduced-motion: reduce) {
