@@ -1,0 +1,38 @@
+@import url("fonts/local.css");
+:root {
+  --green: #204b30; --green-dark: #163522; --green-light: #2c5f3e;
+  --cream: #f5f4ea; --gold: #b89a5e; --gold-light: #e3cf9f; --text: #1c2a21;
+  --serif: "Cormorant Garamond", Georgia, serif; --sans: "Montserrat", sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--green); }
+body { font-family: var(--sans); color: #fff; -webkit-font-smoothing: antialiased; }
+.stage { position: relative; width: 1080px; height: 1920px; overflow: hidden; }
+.scene { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 0 110px; }
+.bg-green { background: url("pattern-light.svg") 0 0 / 144px 72px repeat, radial-gradient(ellipse at 75% 15%, var(--green-light), var(--green) 55%, var(--green-dark)); }
+.bg-cream { background: url("pattern-green.svg") 0 0 / 144px 72px repeat, var(--cream); color: var(--text); }
+.eyebrow { font-weight: 700; letter-spacing: .22em; text-transform: uppercase; font-size: 30px; color: var(--gold-light); display: flex; align-items: center; gap: 28px; }
+.bg-cream .eyebrow { color: var(--gold); }
+.eyebrow::before, .eyebrow::after { content: ""; width: 70px; height: 2px; background: currentColor; }
+.headline { font-family: var(--serif); font-weight: 600; font-size: 138px; line-height: 1.02; }
+.headline em, .gold { font-style: italic; color: var(--gold-light); }
+.bg-cream .headline em, .bg-cream .gold { color: var(--gold); }
+.bg-cream .headline { color: var(--green); }
+.sub { font-size: 44px; line-height: 1.45; opacity: .92; }
+.w { display: inline-block; will-change: transform, opacity; }
+.line { width: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+.pill {
+  display: inline-block; background: var(--cream); color: var(--green); font-weight: 700; font-size: 42px;
+  letter-spacing: .03em; padding: 34px 70px; border-radius: 999px; position: relative; overflow: hidden;
+}
+.pill .shine { position: absolute; inset: 0; background: linear-gradient(100deg, transparent 30%, rgba(255,255,255,.8) 50%, transparent 70%); }
+.wordmark { width: 620px; }
+.small { font-size: 34px; letter-spacing: .08em; opacity: .9; }
+.card {
+  background: rgba(255,255,255,.97); color: var(--text); border-radius: 36px; padding: 56px 60px; text-align: left;
+  width: 860px; box-shadow: 0 30px 80px rgba(0,0,0,.25); display: flex; gap: 44px; align-items: center; border-top: 6px solid var(--gold);
+}
+.card .no { flex: none; width: 120px; height: 120px; border-radius: 50%; background: var(--green); color: #fff; display: grid; place-items: center; font-family: var(--serif); font-size: 76px; font-weight: 600; }
+.card h3 { font-family: var(--serif); font-size: 70px; color: var(--green); line-height: 1.05; margin-bottom: 10px; }
+.card p { font-size: 36px; color: #4a564e; line-height: 1.4; }
+.disclaimer { position: absolute; bottom: 70px; left: 0; right: 0; text-align: center; font-size: 24px; opacity: .6; letter-spacing: .05em; }

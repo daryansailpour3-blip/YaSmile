@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="de"><head><meta charset="UTF-8"><link rel="stylesheet" href="base.css">
+<style>
+  .ring { position: absolute; left: 50%; top: 50%; width: 620px; height: 620px; margin: -310px 0 0 -310px; }
+  .ring circle { fill: none; stroke: var(--gold); stroke-width: 2.5; }
+  .signet-big { width: 300px; filter: brightness(0) invert(1); }
+  #s1 .signet-wrap { position: relative; width: 620px; height: 620px; display: grid; place-items: center; }
+  #s2 .headline { margin: 40px 0; }
+  #yas { font-family: var(--serif); font-style: italic; font-weight: 600; font-size: 300px; line-height: 1; color: var(--gold-light);
+         background: linear-gradient(100deg, #b89a5e 20%, #fff6dc 45%, #e3cf9f 55%, #b89a5e 80%); background-size: 300% 100%;
+         -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  #s3 .item { display: flex; flex-direction: column; align-items: center; margin: 46px 0; }
+  #s3 .item .headline { font-size: 104px; }
+  #s3 .item .sub { color: #4a564e; font-size: 40px; margin-top: 8px; }
+  #s4 .wordmark { margin-bottom: 60px; }
+  #s4 .loc { margin: 40px 0 90px; }
+  .bg-signet { position: absolute; width: 900px; right: -300px; bottom: -200px; filter: brightness(0) invert(1); opacity: .06; }
+</style></head>
+<body><div class="stage">
+
+  <!-- Szene 1: Signet + Goldring -->
+  <section class="scene bg-green" id="s1">
+    <div class="signet-wrap">
+      <svg class="ring" viewBox="0 0 620 620"><circle cx="310" cy="310" r="300" transform="rotate(-90 310 310)"/></svg>
+      <img class="signet-big" src="signet.svg" alt="">
+    </div>
+  </section>
+
+  <!-- Szene 2: Headline -->
+  <section class="scene bg-green" id="s2">
+    <img class="bg-signet" src="signet.svg" alt="">
+    <p class="eyebrow" id="s2e">YASMILE · Zahnmedizin</p>
+    <h1 class="headline" id="s2h">Dein neues Lächeln?</h1>
+    <div id="yas">YAS.</div>
+  </section>
+
+  <!-- Szene 3: Werte -->
+  <section class="scene bg-cream" id="s3">
+    <p class="eyebrow" id="s3e">Zahnmedizin neu gedacht</p>
+    <div class="item" id="i1"><h2 class="headline">Moderne <em>Technik</em></h2><p class="sub">iTero™ Scanner · 3D-Röntgen · CEREC</p></div>
+    <div class="line" id="l1"></div>
+    <div class="item" id="i2"><h2 class="headline">Viel <em>Ruhe</em> &amp; Zeit</h2><p class="sub">Auch für Angstpatienten</p></div>
+    <div class="line" id="l2"></div>
+    <div class="item" id="i3"><h2 class="headline">Für die ganze <em>Familie</em></h2><p class="sub">Vom ersten Zahn bis zum Implantat</p></div>
+  </section>
+
+  <!-- Szene 4: Endcard -->
+  <section class="scene bg-green" id="s4">
+    <img class="bg-signet" src="signet.svg" alt="">
+    <img class="wordmark" id="wm" src="logo-white.svg" alt="YASMILE">
+    <div class="line" id="l4"></div>
+    <p class="small loc" id="loc">KIRN · IDAR-OBERSTEIN</p>
+    <div class="pill" id="cta">Jetzt online Termin buchen<span class="shine" id="shine"></span></div>
+    <p class="small" id="url" style="margin-top:50px">yasmile.de</p>
+  </section>
+
+</div>
+<script src="engine.js"></script>
+<script>
+window.DURATION = 13;
+window.render = (t) => {
+  // Szene 1 (0 – 2.6s)
+  scene($('#s1'), t, 0, 2.6, { reveal: 0 });
+  drift($('#s1'), t);
+  drawCircle($('#s1 circle'), t, 0.1, 1.5);
+  rise($('#s1 .signet-big'), t, 0.5, { dur: 1.2, dist: 0, scale: 0.35, end: 2.1 });
+  $('#s1 .ring').style.transform = `rotate(${t * 12}deg) scale(${1 + easeInOut(prog(t, 2.1, 2.6)) * 1.8})`;
+  $('#s1 .ring').style.opacity = 1 - prog(t, 2.2, 2.6);
+
+  // Szene 2 (2.3 – 6.2s)
+  scene($('#s2'), t, 2.3, 6.2, { reveal: 0.8 });
+  drift($('#s2'), t);
+  rise($('#s2e'), t, 2.7, { end: 5.7 });
+  words($('#s2h'), t, 2.9, { stagger: 0.16, end: 5.7 });
+  rise($('#yas'), t, 3.9, { dur: 1.0, dist: 0, scale: 0.4, end: 5.7 });
+  $('#yas').style.backgroundPosition = `${100 - prog(t, 4.2, 5.4) * 100}% 0`;
+  $('#s2 .bg-signet').style.transform = `translateY(${-t * 30}px) rotate(${t * 2}deg)`;
+
+  // Szene 3 (5.9 – 9.9s)
+  scene($('#s3'), t, 5.9, 9.9, { reveal: 0.9, origin: '50% 100%' });
+  drift($('#s3'), t);
+  rise($('#s3e'), t, 6.3, { end: 9.4 });
+  rise($('#i1'), t, 6.6, { end: 9.4 });
+  drawLine($('#l1'), t, 7.1, 0.8, 380);
+  rise($('#i2'), t, 7.4, { end: 9.4 });
+  drawLine($('#l2'), t, 7.9, 0.8, 380);
+  rise($('#i3'), t, 8.2, { end: 9.4 });
+
+  // Szene 4 (9.6 – Ende)
+  scene($('#s4'), t, 9.6, 99, { reveal: 0.9 });
+  drift($('#s4'), t);
+  rise($('#wm'), t, 10.0, { dist: 40, scale: 0.1 });
+  drawLine($('#l4'), t, 10.3, 0.9, 460);
+  rise($('#loc'), t, 10.5);
+  rise($('#cta'), t, 10.8, { scale: 0.15 });
+  shine($('#shine'), t, 11.6, 2.4);
+  rise($('#url'), t, 11.1);
+  $('#s4 .bg-signet').style.transform = `translateY(${-(t - 9.6) * 25}px)`;
+};
+render(0);
+</script>
+</body></html>

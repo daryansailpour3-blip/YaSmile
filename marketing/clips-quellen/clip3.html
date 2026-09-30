@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="de"><head><meta charset="UTF-8"><link rel="stylesheet" href="base.css">
+<style>
+  .heart { width: 190px; height: 190px; margin-bottom: 70px; }
+  .heart path { fill: none; stroke: var(--gold-light); stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+  #s1 .headline { font-size: 128px; }
+  #s2 .headline { font-size: 150px; margin: 30px 0 50px; }
+  .pill-list { display: flex; flex-direction: column; gap: 34px; align-items: center; }
+  .tag { font-size: 44px; font-weight: 600; color: var(--green); background: #fff; border: 2px solid var(--gold); border-radius: 999px; padding: 26px 60px; }
+  #s3 .headline { font-size: 112px; margin: 36px 0; }
+  #s3 .sub { max-width: 820px; }
+  .bg-signet { position: absolute; width: 900px; right: -300px; bottom: -200px; filter: brightness(0) invert(1); opacity: .06; }
+  #s4 .wordmark { margin-bottom: 60px; }
+  #s4 .loc { margin: 40px 0 90px; }
+</style></head>
+<body><div class="stage">
+
+  <section class="scene bg-green" id="s1">
+    <svg class="heart" viewBox="0 0 100 100" id="hs"><path id="hp" d="M50 84 C20 62 8 46 8 31 C8 19 18 10 30 10 C39 10 46 15 50 22 C54 15 61 10 70 10 C82 10 92 19 92 31 C92 46 80 62 50 84 Z"/></svg>
+    <h1 class="headline" id="h1">Herzklopfen beim Wort <em>„Zahnarzt“?</em></h1>
+  </section>
+
+  <section class="scene bg-cream" id="s2">
+    <p class="eyebrow" id="e2">Wir sind für Sie da</p>
+    <h2 class="headline" id="h2">Ganz in <em>Ruhe.</em></h2>
+    <div class="pill-list">
+      <div class="tag" id="t1">Viel Zeit &amp; Empathie</div>
+      <div class="tag" id="t2">Jeder Schritt wird erklärt</div>
+      <div class="tag" id="t3">Wohlfühl-Atmosphäre</div>
+    </div>
+  </section>
+
+  <section class="scene bg-green" id="s3">
+    <img class="bg-signet" src="signet.svg" alt="">
+    <p class="eyebrow" id="e3">Auf Wunsch</p>
+    <h2 class="headline" id="h3">Entspannt behandelt</h2>
+    <p class="sub" id="p3">Verschiedene Sedierungsmöglichkeiten – von Lachgas bis zur Vollnarkose.</p>
+  </section>
+
+  <section class="scene bg-green" id="s4">
+    <img class="bg-signet" src="signet.svg" alt="">
+    <img class="wordmark" id="wm" src="logo-white.svg" alt="YASMILE">
+    <div class="line" id="l4"></div>
+    <p class="small loc" id="loc">KIRN · IDAR-OBERSTEIN</p>
+    <div class="pill" id="cta">Termin in Ruhe online buchen<span class="shine" id="shine"></span></div>
+    <p class="small" id="url" style="margin-top:50px">yasmile.de</p>
+  </section>
+
+</div>
+<script src="engine.js"></script>
+<script>
+window.DURATION = 14;
+window.render = (t) => {
+  scene($('#s1'), t, 0, 3.6, { reveal: 0 });
+  drift($('#s1'), t);
+  drawCircle($('#hp'), t, 0.1, 1.4);
+  // sanfter Herzschlag, der sich beruhigt
+  const beat = Math.max(0, Math.sin(t * 7)) * 0.08 * (1 - prog(t, 1.5, 3.2));
+  $('#hs').style.transform = `scale(${1 + beat})`;
+  $('#hs').style.opacity = 1 - prog(t, 3.0, 3.4);
+  words($('#h1'), t, 0.9, { stagger: 0.14, end: 3.1 });
+
+  scene($('#s2'), t, 3.3, 7.6, { reveal: 0.9, origin: '50% 100%' });
+  drift($('#s2'), t, 10);
+  rise($('#e2'), t, 3.7, { end: 7.1 });
+  words($('#h2'), t, 3.9, { stagger: 0.2, end: 7.1 });
+  rise($('#t1'), t, 4.8, { end: 7.1 });
+  rise($('#t2'), t, 5.3, { end: 7.1 });
+  rise($('#t3'), t, 5.8, { end: 7.1 });
+
+  scene($('#s3'), t, 7.3, 10.6, { reveal: 0.9 });
+  drift($('#s3'), t, 10);
+  rise($('#e3'), t, 7.7, { end: 10.1 });
+  words($('#h3'), t, 7.9, { stagger: 0.2, end: 10.1 });
+  rise($('#p3'), t, 8.7, { end: 10.1 });
+  $('#s3 .bg-signet').style.transform = `translateY(${-(t - 7.3) * 25}px)`;
+
+  scene($('#s4'), t, 10.3, 99, { reveal: 0.9 });
+  drift($('#s4'), t, 10);
+  rise($('#wm'), t, 10.7, { dist: 40, scale: 0.1 });
+  drawLine($('#l4'), t, 11.0, 0.9, 460);
+  rise($('#loc'), t, 11.2);
+  rise($('#cta'), t, 11.5, { scale: 0.15 });
+  shine($('#shine'), t, 12.3, 2.4);
+  rise($('#url'), t, 11.8);
+  $('#s4 .bg-signet').style.transform = `translateY(${-(t - 10.3) * 25}px)`;
+};
+render(0);
+</script>
+</body></html>
